@@ -1,10 +1,18 @@
+import 'package:e_libary/providers/themePrivider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+// import '/themeProvider.dart';
 import 'pages/adminPage.dart';
 import 'pages/homePage.dart';
 import 'pages/settingsPage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,12 +20,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Book Management',
+      themeMode: themeProvider.themeMode,
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
+      darkTheme: ThemeData.dark(),
       home: const MainPage(),
     );
   }
