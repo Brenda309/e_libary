@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                     child: Container(
-                      width: 150,
+                      width: 180,
                       margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -163,8 +163,8 @@ class _HomePageState extends State<HomePage> {
                             _books[index]['image'] != null
                                 ? Image.network(
                               _books[index]['image'],
-                              width: 150,
-                              height: 100,
+                              width: 180,
+                              height: 90,
                               fit: BoxFit.cover,
                             )
                                 : const Icon(Icons.book, size: 100),

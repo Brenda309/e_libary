@@ -153,14 +153,25 @@ class _HomePageState extends State<AdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Book Management'),
+        title: const Text('Manage Book Page'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.grey, Colors.green],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
         itemCount: _books.length,
         itemBuilder: (context, index) => Card(
-          color: Colors.orange[200],
+          color: Colors.green[600],
           margin: const EdgeInsets.all(15),
           child: ListTile(
             leading: _books[index]['image'] != null
@@ -172,7 +183,7 @@ class _HomePageState extends State<AdminPage> {
             )
                 : const Icon(Icons.book),
             title: Text(_books[index]['title']),
-            subtitle: Text(_books[index]['description']),
+            subtitle: Text(_books[index]['author']),
             trailing: SizedBox(
               width: 100,
               child: Row(
